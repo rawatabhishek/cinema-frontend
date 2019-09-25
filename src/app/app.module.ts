@@ -1,5 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from "@angular/common/http";
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -11,6 +12,9 @@ import { ResetPasswordComponent } from './views/auth/reset-password/reset-passwo
 import { HomepageComponent } from './views/homepage/homepage.component';
 import { MoviesComponent } from './views/movies/movies.component';
 import { CinemasComponent } from './views/cinemas/cinemas.component';
+
+/** Services */
+import { CinemasService } from "./services/cinemas/cinemas.service";
 
 @NgModule({
 	declarations: [
@@ -26,9 +30,12 @@ import { CinemasComponent } from './views/cinemas/cinemas.component';
 	],
 	imports: [
 		BrowserModule,
-		AppRoutingModule
+		AppRoutingModule,
+		HttpClientModule
 	],
-	providers: [],
+	providers: [
+		CinemasService
+	],
 	bootstrap: [AppComponent]
 })
 export class AppModule { }
