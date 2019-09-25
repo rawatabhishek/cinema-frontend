@@ -8,21 +8,27 @@ import { FooterComponent } from './views/layout/footer/footer.component';
 import { LoginComponent } from './views/auth/login/login.component';
 import { ForgotPasswordComponent } from './views/auth/forgot-password/forgot-password.component';
 import { ResetPasswordComponent } from './views/auth/reset-password/reset-password.component';
+import { HomepageComponent } from './views/homepage/homepage.component';
+import { MoviesComponent } from './views/movies/movies.component';
+import { CinemasComponent } from './views/cinemas/cinemas.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    HeaderComponent,
-    FooterComponent,
-    LoginComponent,
-    ForgotPasswordComponent,
-    ResetPasswordComponent
-  ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule
-  ],
-  providers: [],
-  bootstrap: [AppComponent]
+	declarations: [
+		AppComponent,
+		HeaderComponent,
+		FooterComponent,
+		LoginComponent,
+		ForgotPasswordComponent,
+		ResetPasswordComponent,
+		HomepageComponent,
+		MoviesComponent,
+		CinemasComponent
+	],
+	imports: [
+		BrowserModule,
+		AppRoutingModule
+	],
+	providers: [],
+	bootstrap: [AppComponent]
 })
 export class AppModule { }
