@@ -15,6 +15,7 @@ import { CinemasComponent } from './views/cinemas/cinemas.component';
 
 /** Services */
 import { CinemasService } from "./services/cinemas/cinemas.service";
+import { CinemaDetailsComponent } from './views/cinema-details/cinema-details.component';
 
 @NgModule({
 	declarations: [
@@ -26,7 +27,8 @@ import { CinemasService } from "./services/cinemas/cinemas.service";
 		ResetPasswordComponent,
 		HomepageComponent,
 		MoviesComponent,
-		CinemasComponent
+		CinemasComponent,
+		CinemaDetailsComponent
 	],
 	imports: [
 		BrowserModule,

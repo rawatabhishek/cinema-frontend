@@ -1,6 +1,12 @@
+@font-face {
+  font-family: OpenSans-Regular;
+  src: url(assets/fonts/OpenSans/OpenSans-Regular.ttf); 
+}
 
  body {
     padding-top: 56px;
+    height: 100%;
+	  font-family: OpenSans-Regular, sans-serif;
   }
   
   .carousel-item {
@@ -16,4 +22,7 @@
   .portfolio-item {
     margin-bottom: 30px;
   }
+
+
+
   

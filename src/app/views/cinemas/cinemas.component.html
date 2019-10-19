@@ -23,7 +23,7 @@
 					<h3>{{ cinema.name }}</h3>
 					<p class="small">{{ cinema.address }}</p>
 					<p>&nbsp;</p>
-					<a class="btn btn-primary btn-sm" href="#">Book a movie
+					<a class="btn btn-primary btn-sm" [routerLink]="['/cinema-details', cinema._id]">Book a movie
 						<span class="glyphicon glyphicon-chevron-right"></span>
 					</a>
 				</div>

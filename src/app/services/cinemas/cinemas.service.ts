@@ -13,13 +13,19 @@ export class CinemasService {
 		private http: HttpClient
 	) { }
 
-	public getCinemasByCity(cinemaId):Observable<any> {
+	public getCinemasByCity(cinemaId): Observable<any> {
 		const endPoint = `${this.microserviceUrl}/cinema/${cinemaId}`;
 		return this.http.get(endPoint);
 	}
 
-	public getCinemas():Observable<any> {
+	public getCinemas(): Observable<any> {
 		const endPoint = `${this.microserviceUrl}/cinema/list`;
 		return this.http.get(endPoint);
+	}
+
+	public getCinemaById(cinemaId): Observable<any> {
+		const endPoint = `${this.microserviceUrl}/cinema/details/${cinemaId}`;
+		return this.http.get(endPoint);
+
 	}
 }
