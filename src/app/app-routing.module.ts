@@ -5,6 +5,7 @@ import { CinemasComponent } from "./views/cinemas/cinemas.component";
 import { CinemaDetailsComponent } from "./views/cinema-details/cinema-details.component";
 import { LoginComponent } from "./views/auth/login/login.component";
 import { MoviesComponent } from "./views/movies/movies.component";
+import { MovieDetailsComponent } from "./views/movie-details/movie-details.component";
 
 const routes: Routes = [
 	{ path: '', component: HomepageComponent, pathMatch: 'full' },
@@ -12,6 +13,7 @@ const routes: Routes = [
 	{ path: 'movies', component: MoviesComponent },
 	{ path: 'cinemas-list', component: CinemasComponent },
 	{ path: 'cinema-details/:cinemaId', component: CinemaDetailsComponent },
+	{ path: 'movie-details/:movieId', component: MovieDetailsComponent },
 ];
 
 @NgModule({
