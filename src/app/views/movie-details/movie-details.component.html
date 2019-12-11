@@ -1,1 +1,39 @@
-<p>movie-details works!</p>
+<div class="container movieDetailContainer" style="margin-bottom: 115px;">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>{{movieDetails.name}}</h2>
+            <p>{{movieDetails.summary}}</p>
+        </div>
+    </div>
+    <div class="row mb-4">
+        <div class="col-md-3"><b>ScreenTime: </b>{{movieDetails.screenTime}} mins</div>
+        <div class="col-md-3"><b>Genre: </b>{{(movieDetails.genre) ? movieDetails.genre.toString():''}}</div>
+        <div class="col-md-3"><b>Release Date: </b>{{movieDetails.releaseDate | date:mediumDate}}</div>
+        <div class="col-md-3"><b>Language: </b>{{movieDetails.language}}</div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Now showing</h3>
+        </div>
+    </div>
+    <div class="row mt-2 mb-4">
+        <div class="col-md-12">
+            <button class="btn btn-success">1 Sun</button>
+        </div>
+    </div>
+    <ng-container *ngIf="movieDetails['featuring-cinemas'] && movieDetails['featuring-cinemas'].length > 0">
+        <div class="row mb-4" *ngFor="let cinemaDetails of movieDetails['featuring-cinemas']">
+            <div class="col-md-5">
+                <p>
+                    <b>{{cinemaDetails.name}}</b><br>
+                    <small>{{cinemaDetails.address}}</small>
+                </p>
+            </div>
+            <div class="col-md-7">
+                <a type="button" class="btn btn-primary mr-3"
+                    *ngFor="let showTime of cinemaDetails['showtime'] let i = index" [routerLink]="['/book-tickets', cinemaDetails._id, showTime]">{{showTime}}</a>
+            </div>
+        </div>
+    </ng-container>
+</div>

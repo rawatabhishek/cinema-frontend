@@ -6,7 +6,8 @@ export const environment = {
 	production: false,
 	cinemaCatalogMicroservice: 'http://localhost:3000',
 	movieMicroservice: 'http://localhost:3010',
-	authenticationMicroservice: 'http://localhost:3020'
+	authenticationMicroservice: 'http://localhost:3020',
+	bookingMicroservice: 'http://localhost:3030'
 };
 
 /*

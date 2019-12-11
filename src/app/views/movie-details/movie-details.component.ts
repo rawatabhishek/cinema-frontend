@@ -32,4 +32,8 @@ export class MovieDetailsComponent implements OnInit {
 			);
 	}
 
+	public getSelectedMovieDetails(cinemaId, showDateTime) {
+		console.log(cinemaId, showDateTime);
+	}
+
 }

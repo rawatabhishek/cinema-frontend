@@ -18,6 +18,8 @@ import { CinemasComponent } from './views/cinemas/cinemas.component';
 import { CinemasService } from "./services/cinemas/cinemas.service";
 import { CinemaDetailsComponent } from './views/cinema-details/cinema-details.component';
 import { MovieDetailsComponent } from './views/movie-details/movie-details.component';
+import { TicketBookingComponent } from './views/ticket-booking/ticket-booking.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 
 @NgModule({
 	declarations: [
@@ -31,13 +33,15 @@ import { MovieDetailsComponent } from './views/movie-details/movie-details.compo
 		MoviesComponent,
 		CinemasComponent,
 		CinemaDetailsComponent,
-		MovieDetailsComponent
+		MovieDetailsComponent,
+		TicketBookingComponent
 	],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
 		HttpClientModule,
-		ReactiveFormsModule
+		ReactiveFormsModule,
+		BrowserAnimationsModule
 	],
 	providers: [
 		CinemasService
