@@ -4,7 +4,7 @@
             <h2>Ticket Booking</h2>
         </div>
     </div>
-    <div class="row mt-4">
+    <div class="row mt-4 mb-3">
         <div class="col-md-12">
             <p><b>Cinema Name:</b> {{ cinemaMovieDetails?.cinema_name }}</p>
         </div>
@@ -19,29 +19,23 @@
         </div>
     </div>
     <form [formGroup]="ticketBookingForm" (submit)="onTicketBookingFormSubmit()">
-        <div class="form-group row">
-            <label for="staticEmail" class="col-md-2 col-form-label"><b>Ticket Price</b></label>
-            <div class="col-md-5">
-                <select class="form-control" id="sel1" formControlName="ticketPrice">
-                    <option value="">Select Price</option>
-                    <option>20</option>
-                    <option>30</option>
-                    <option>40</option>
-                </select>
-            </div>
+        <div class="form-group">
+            <mat-form-field>
+                <mat-label>Ticket Price</mat-label>
+                <mat-select formControlName="ticketPrice">
+                    <mat-option *ngFor="let price of ticketPrices" [value]="price.price">{{price?.category}} - {{price?.price}}</mat-option>                    
+                </mat-select>
+            </mat-form-field>
         </div>
-        <div class="form-group row">
-            <label for="staticEmail" class="col-md-2 col-form-label"><b>Available Seats</b></label>
-            <div class="col-md-5">
-                <select class="form-control" id="sel1" formControlName="seats">
-                    <option value="">Select Seats</option>
-                    <option>2</option>
-                    <option>3</option>
-                    <option>4</option>
-                </select>
-            </div>
+        <div class="form-group">
+            <mat-form-field>
+                <mat-label>Available Seats</mat-label>
+                <mat-select formControlName="seats" multiple>
+                    <mat-option *ngFor="let seat of availSeats" [value]="seat">{{seat}}</mat-option>
+                </mat-select>
+            </mat-form-field>
         </div>
-        <div class="form-group row mt-5">
+        <div class="form-group row mt-5 mb-4">
             <div class="col-md-5">
                 <button type="submit" class="btn btn-primary" [disabled]="!ticketBookingForm.valid">Book Ticket</button>
             </div>

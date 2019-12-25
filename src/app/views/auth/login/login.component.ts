@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
 import { AuthService } from "./../../../services/auth/auth.service";
-import { Router } from "@angular/router";
+import { Router, ActivatedRoute } from "@angular/router";
 
 @Component({
 	selector: 'app-login',
@@ -9,6 +9,8 @@ import { Router } from "@angular/router";
 	styleUrls: ['./login.component.css']
 })
 export class LoginComponent implements OnInit {
+	private movieIdQueryParam;
+
 	loginForm = this.fb.group({
 		username: ['', [Validators.required, Validators.email]],
 		password: ['', Validators.required]
@@ -17,10 +19,13 @@ export class LoginComponent implements OnInit {
 	constructor(
 		private fb: FormBuilder,
 		private authService: AuthService,
-		private router: Router
+		private router: Router,
+		private activatedRoute: ActivatedRoute
 	) { }
 
 	ngOnInit() {
+		const movieIdValue = this.activatedRoute.snapshot.queryParamMap.get('movieId');
+		this.movieIdQueryParam = movieIdValue ? movieIdValue : "";
 
 	}
 
@@ -28,13 +33,18 @@ export class LoginComponent implements OnInit {
 		if (this.loginForm.valid) {
 			let authPayload = this.loginForm.value;
 			this.authService.authentication(authPayload)
-				.subscribe(authUserDetails => {
-					localStorage.setItem('userDetails', JSON.stringify(authUserDetails));
-					let accessToken = authUserDetails.access_token;
-					localStorage.setItem('access_token', accessToken);
-					this.router.navigate(['/cinemas-list']);
-					this.authService.updateAuthUserState(true);
-				},
+				.subscribe(
+					authUserDetails => {
+						localStorage.setItem('userDetails', JSON.stringify(authUserDetails));
+						let accessToken = authUserDetails.access_token;
+						localStorage.setItem('access_token', accessToken);
+						if (this.authService.redirectUrl) {
+							this.router.navigate([this.authService.redirectUrl]);
+						} else {
+							this.router.navigate(['/cinemas-list']);
+						}
+						this.authService.updateAuthUserState(true);
+					},
 					error => {
 						console.log(error);
 					});

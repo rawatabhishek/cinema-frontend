@@ -23,9 +23,9 @@
 					<h3>{{ movie.name }}</h3>
 					<p class="small">{{ movie.summary }}</p>
 					<p>&nbsp;</p>
-					<a class="btn btn-primary btn-sm" [routerLink]="['/movie-details', movie._id]">Book a movie
+					<button type="button" class="btn btn-primary btn-sm" (click)="bookAMovie(movie._id)">Book a movie
 						<span class="glyphicon glyphicon-chevron-right"></span>
-					</a>
+					</button>
 				</div>
 			</div>
 			<hr>

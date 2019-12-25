@@ -7,7 +7,9 @@ export const environment = {
 	cinemaCatalogMicroservice: 'http://localhost:3000',
 	movieMicroservice: 'http://localhost:3010',
 	authenticationMicroservice: 'http://localhost:3020',
-	bookingMicroservice: 'http://localhost:3030'
+	bookingMicroservice: 'http://localhost:3030',
+	paymentMicroservice: 'http://localhost:3040',
+	stripePublicKey: 'pk_test_aRwpT5842YFdXBpzxvhgSQHz008IAW1UfK'
 };
 
 /*

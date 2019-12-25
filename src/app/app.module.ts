@@ -1,7 +1,9 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { HttpClientModule } from "@angular/common/http";
+import { HttpClientModule, HTTP_INTERCEPTORS } from "@angular/common/http";
 import { ReactiveFormsModule } from "@angular/forms";
+import { MatSelectModule } from '@angular/material/select';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -20,6 +22,8 @@ import { CinemaDetailsComponent } from './views/cinema-details/cinema-details.co
 import { MovieDetailsComponent } from './views/movie-details/movie-details.component';
 import { TicketBookingComponent } from './views/ticket-booking/ticket-booking.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { PaymentComponent } from './views/payment/payment.component';
+import { AuthInterceptor } from "./interceptor/auth.interceptor";
 
 @NgModule({
 	declarations: [
@@ -34,17 +38,21 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 		CinemasComponent,
 		CinemaDetailsComponent,
 		MovieDetailsComponent,
-		TicketBookingComponent
+		TicketBookingComponent,
+		PaymentComponent
 	],
 	imports: [
 		BrowserModule,
 		AppRoutingModule,
 		HttpClientModule,
 		ReactiveFormsModule,
-		BrowserAnimationsModule
+		BrowserAnimationsModule,
+		MatSelectModule,
+		ToastrModule.forRoot()
 	],
 	providers: [
-		CinemasService
+		{ provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+
 	],
 	bootstrap: [AppComponent]
 })
