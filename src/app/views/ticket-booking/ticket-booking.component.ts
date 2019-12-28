@@ -61,7 +61,7 @@ export class TicketBookingComponent implements OnInit {
 				amount: 100
 			});
 		} else {
-			alert('Invalid');
+			this.toastr.error('Something went wrong onTicketBookingFormSubmit', 'Error');
 		}
 	}
 
@@ -79,7 +79,7 @@ export class TicketBookingComponent implements OnInit {
 				this.toastr.success(response.message, 'Success');
 			},
 			error => {
-				console.log(error)
+				this.toastr.error('Something went wrong chargeTicketAmount', 'Error');
 			}
 		);
 	}
@@ -91,7 +91,7 @@ export class TicketBookingComponent implements OnInit {
 				this.ticketPrices = response.ticket_price ? response.ticket_price : [];
 			},
 			error => {
-				console.log(error);
+				this.toastr.error('Something went wrong in getCinemaMovieDetail', 'Error');
 			}
 		)
 	}

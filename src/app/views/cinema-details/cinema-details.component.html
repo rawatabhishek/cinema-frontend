@@ -1,1 +1,33 @@
-<p>cinema-details works!</p>
+<div class="container cinemaDetailContainer" style="margin-bottom: 115px;">
+    <div class="row">
+        <div class="col-md-12">
+            <h2>{{cinemaDetails.name}}</h2>
+            <p>{{cinemaDetails.address}}</p>
+        </div>
+    </div>
+    <hr>
+    <div class="row">
+        <div class="col-md-12">
+            <h3>Now showing</h3>
+        </div>
+    </div>
+    <div class="row mt-2 mb-4">
+        <div class="col-md-12">
+            <button class="btn btn-success">1 Sun</button>
+        </div>
+    </div>
+    <ng-container *ngIf="cinemaDetails['featuring-movie'] && cinemaDetails['featuring-movie'].length > 0">
+        <div class="row mb-4" *ngFor="let movieDetails of cinemaDetails['featuring-movie']">
+            <div class="col-md-5">
+                <p>
+                    <b>{{movieDetails.name}}</b><br>
+                    <small>{{movieDetails.summary | slice:0:150}}</small>
+                </p>
+            </div>
+            <div class="col-md-7">
+                <a type="button" class="btn btn-primary mr-3"
+                    *ngFor="let showTime of movieDetails['showtime'] let i = index" [routerLink]="['/book-tickets', movieDetails._id, showTime]">{{showTime}}</a>
+            </div>
+        </div>
+    </ng-container>
+</div>

@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from "@angular/forms";
 import { AuthService } from "./../../../services/auth/auth.service";
@@ -20,6 +21,7 @@ export class LoginComponent implements OnInit {
 		private fb: FormBuilder,
 		private authService: AuthService,
 		private router: Router,
+		private toastr: ToastrService,
 		private activatedRoute: ActivatedRoute
 	) { }
 
@@ -46,10 +48,10 @@ export class LoginComponent implements OnInit {
 						this.authService.updateAuthUserState(true);
 					},
 					error => {
-						console.log(error);
+						this.toastr.error('Something went wrong onLoginFormSubmit', 'Error');
 					});
 		} else {
-			alert('Invalid');
+			this.toastr.error('Form not valid', 'Error');
 		}
 	}
 }

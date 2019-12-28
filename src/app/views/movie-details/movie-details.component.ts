@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from "@angular/router";
 import { MoviesService } from "./../../services/movies/movies.service";
@@ -11,6 +12,7 @@ export class MovieDetailsComponent implements OnInit {
 	public movieDetails = {};
 
 	constructor(
+		private toastr: ToastrService,
 		private route: ActivatedRoute,
 		private movieService: MoviesService
 	) { }
@@ -27,7 +29,7 @@ export class MovieDetailsComponent implements OnInit {
 					this.movieDetails = response;
 				},
 				error => {
-					console.log(error);
+					this.toastr.error('Something went wrong getMovieDetails', 'Error');
 				}
 			);
 	}

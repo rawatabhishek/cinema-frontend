@@ -15,7 +15,7 @@ const routes: Routes = [
 	{ path: 'login', component: LoginComponent },
 	{ path: 'movies', component: MoviesComponent },
 	{ path: 'cinemas-list', component: CinemasComponent },
-	{ path: 'cinema-details/:cinemaId', component: CinemaDetailsComponent },
+	{ path: 'cinema-details/:cinemaId', canActivate: [AuthGuard], component: CinemaDetailsComponent },
 	{ path: 'movie-details/:movieId', canActivate: [AuthGuard], component: MovieDetailsComponent },
 	{ path: 'book-tickets/:cinemaMovieId/:showDateTime', canActivate: [AuthGuard], component: TicketBookingComponent }
 ];

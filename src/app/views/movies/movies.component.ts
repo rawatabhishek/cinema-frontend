@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { Router } from "@angular/router";
 import { Component, OnInit } from '@angular/core';
 import { MoviesService } from "./../../services/movies/movies.service";
@@ -11,6 +12,7 @@ export class MoviesComponent implements OnInit {
 	public movieList: Array<Object> = [];
 
 	constructor(
+		private toastr: ToastrService,
 		private movieService: MoviesService,
 		private router: Router
 	) { }
@@ -26,18 +28,13 @@ export class MoviesComponent implements OnInit {
 					this.movieList = response;
 				},
 				error => {
-					console.log(error);
+					this.toastr.error('Something went wrong getMovies', 'Error');
 				}
 			);
 	}
 
 	public bookAMovie(movieId) {
-		const accessToken = localStorage.getItem('access_token');
-		if (accessToken) {
-			this.router.navigate(['/movie-details', movieId]);
-		} else {
-			this.router.navigate(['/login'], { queryParams: { movieId: movieId } });
-		}
+		this.router.navigate(['/movie-details', movieId]);
 	}
 
 }

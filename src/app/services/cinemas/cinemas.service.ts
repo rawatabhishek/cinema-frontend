@@ -24,7 +24,7 @@ export class CinemasService {
 	}
 
 	public getCinemaById(cinemaId): Observable<any> {
-		const endPoint = `${this.microserviceUrl}/cinema/details/${cinemaId}`;
+		const endPoint = `${this.microserviceUrl}/cinema-details/${cinemaId}`;
 		return this.http.get(endPoint);
 
 	}

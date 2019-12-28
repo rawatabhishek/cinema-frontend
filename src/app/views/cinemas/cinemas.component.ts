@@ -1,3 +1,4 @@
+import { ToastrService } from 'ngx-toastr';
 import { Component, OnInit } from '@angular/core';
 import { CinemasService } from "./../../services/cinemas/cinemas.service";
 
@@ -10,6 +11,7 @@ export class CinemasComponent implements OnInit {
 	public cinemaList:Array<Object> = [];
 
 	constructor(
+		private toastr: ToastrService,
 		private cinemaService: CinemasService
 	) { }
 
@@ -24,7 +26,7 @@ export class CinemasComponent implements OnInit {
 					this.cinemaList = response;
 				},
 				error => {
-					console.log(error);
+					this.toastr.error('Something went wrong getCinemasByCity', 'Error');
 				}
 			);
 	}
@@ -36,7 +38,7 @@ export class CinemasComponent implements OnInit {
 					this.cinemaList = response;
 				},
 				error => {
-					console.log(error);
+					this.toastr.error('Something went wrong getCinemas', 'Error');
 				}
 			);
 	}
